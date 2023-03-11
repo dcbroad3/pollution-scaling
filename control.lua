@@ -1,5 +1,3 @@
-local freq_ticks = 60 * 10
-
 local function update_expected_max_per_chunk()
   -- Start with vanilla default value of 150
   -- https://lua-api.factorio.com/latest/Concepts.html#PollutionMapSettings
@@ -18,11 +16,7 @@ local function update_expected_max_per_chunk()
   game.map_settings.pollution.min_to_show_per_chunk = max / 3;
 end
 
-script.on_event(defines.events.on_tick,
-  function(e)
-    -- Run every ten seconds
-    if e.tick % freq_ticks == 0 then
-      update_expected_max_per_chunk()
-    end
-  end
-)
+-- Update every 10 seconds
+script.on_nth_tick(600, function()
+  update_expected_max_per_chunk()
+end)
