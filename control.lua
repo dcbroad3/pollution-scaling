@@ -41,12 +41,10 @@ local function setup_interval()
   end)
 end
 
--- Setup interval on initial load
-script.on_init(function()
-  setup_interval()
-end)
-
 -- Setup interval whenever mod settings are changed
 script.on_event(defines.events.on_runtime_mod_setting_changed, function()
   setup_interval()
 end)
+
+-- Setup interval on script load
+setup_interval()
