@@ -32,8 +32,10 @@ local function setup_interval()
   local max_factor = max_percent / 100
   local min_factor = min_percent / 100
 
-  -- Update once before setting up interval
-  update_expected_max_per_chunk(max_factor, min_factor)
+  -- Update once before setting up interval, if game is defined
+  if game then
+    update_expected_max_per_chunk(max_factor, min_factor)
+  end
 
   -- Setup (or override existing) on_nth_tick handler
   script.on_nth_tick(interval_ticks, function()
