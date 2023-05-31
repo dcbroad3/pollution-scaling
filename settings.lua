@@ -25,6 +25,13 @@ data:extend(
       default_value = 33,
       minimum_value = 0,
       maximum_value = 100,
+    },
+    {
+      type = "color-setting",
+      name = "pollution-scaling-chart-color",
+      order = "d",
+      setting_type = "startup",
+      default_value = {r=140,g=0,b=0,a=149}
     }
   }
 )
