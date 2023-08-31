@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.4
+Date: 2023-08-31
+  Changed:
+    - Spread iteration of chunks across multiple ticks to improve performance
+    - Number of chunks iterated per chunk is based on total number of chunks and interval secs
+    - Changed default interval secs from 10 to 60
+---------------------------------------------------------------------------------------------------
 Version: 1.0.3
 Date: 2023-05-31
   Added:

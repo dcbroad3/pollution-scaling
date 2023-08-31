@@ -5,7 +5,7 @@ data:extend(
       name = "pollution-scaling-interval-secs",
       order = "a",
       setting_type = "runtime-global",
-      default_value = 10,
+      default_value = 60,
       minimum_value = 1,
     },
     {
