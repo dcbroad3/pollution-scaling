@@ -5,6 +5,16 @@ local interval_ticks, max_factor, min_factor
 local max, chunks_per_tick, chunks_count
 local surface_iter, surface_ind, surface, chunk_iter
 
+-- Set total number of chunks for initial state
+local function set_chunks_count()
+  chunks_count = 0
+  for _, surface in pairs(game.surfaces) do
+    for chunk in surface.get_chunks() do
+      chunks_count = chunks_count + 1
+    end
+  end
+end
+
 -- Set up all values to start iterating chunks
 local function reset_values()
   chunks_per_tick = math.ceil(chunks_count / interval_ticks)
@@ -27,6 +37,13 @@ end
 
 -- Every tick, iterate a number of chunks to check for maximum pollution value
 local function check_chunk_batch()
+  if not chunk_iter.valid then
+    set_chunks_count() -- Reset chunk count since we quit early
+    reset_values() -- Set up for a new pass
+    -- Skip finalize_update since data is incomplete
+    return
+  end
+    
   for i=1,chunks_per_tick do
     local chunk = chunk_iter()
     if chunk then
@@ -53,14 +70,7 @@ end
 
 -- Run on initial load and any time settings change
 local function start_update()
-  -- Determine initial number of chunks per tick
-  chunks_count = 0 -- Initial count of chunks
-  for _, surface in pairs(game.surfaces) do
-    for chunk in surface.get_chunks() do
-      chunks_count = chunks_count + 1
-    end
-  end
-
+  set_chunks_count()
   reset_values()
 
   script.on_event(defines.events.on_tick, function()
