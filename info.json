@@ -6,6 +6,6 @@
   "contact": "https://github.com/dcbroad3/pollution-scaling",
   "homepage": "https://github.com/dcbroad3/pollution-scaling",
   "description": "Scales pollution in the map view based on the maximum pollution of any one chunk",
-  "factorio_version": "1.1",
+  "factorio_version": "2.0",
   "dependencies": ["base >= 1.1.76"]
 }
