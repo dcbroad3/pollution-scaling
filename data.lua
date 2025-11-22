@@ -1,1 +1,1 @@
-data.raw["utility-constants"]["default"].chart.pollution_color = settings.startup["pollution-scaling-chart-color"].value
+data.raw["airborne-pollutant"]["pollution"].chart_color = settings.startup["pollution-scaling-chart-color"].value
